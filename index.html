@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bouge ta Campagne — Nos Actions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green-dark: #1B5E3B;
+      --green-mid: #3DAE6A;
+      --green-light: #6DC98A;
+      --green-pale: #e8f7ef;
+      --yellow: #F5A623;
+      --yellow-dark: #c8860f;
+      --blue-dark: #1a5fa0;
+      --blue: #4A90D9;
+      --blue-mid: #3578c4;
+      --blue-light: #e8f2fc;
+      --orange: #E8622A;
+      --purple: #7B5EA7;
+      --pink: #D64B8A;
+      --teal: #1A9D8F;
+      --red: #C0392B;
+      --text: #0f2340;
+      --text-light: #3a5a7a;
+      --white: #ffffff;
+      --bg: #f0f6fd;
+      --radius: 18px;
+      --shadow: 0 4px 24px rgba(26,95,160,0.10);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #1a5fa0 0%, #3578c4 50%, #4A90D9 100%);
+      padding: 48px 24px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -40px; left: -40px;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; right: -30px;
+      width: 260px; height: 260px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+    .header-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .logo-badge {
+      background: var(--yellow);
+      color: var(--blue-dark);
+      font-family: 'Baloo 2', cursive;
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 6px 16px;
+      border-radius: 50px;
+      letter-spacing: 0.5px;
+    }
+    header h1 {
+      font-family: 'Baloo 2', cursive;
+      font-weight: 800;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    header h1 span {
+      color: var(--yellow);
+    }
+    header p {
+      color: rgba(255,255,255,0.88);
+      font-size: 1.1rem;
+      font-weight: 600;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .age-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      border-radius: 50px;
+      padding: 4px 18px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* WAVE */
+    .wave {
+      display: block;
+      width: 100%;
+      margin-bottom: -2px;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    /* SECTION TITLE */
+    .section-title {
+      font-family: 'Baloo 2', cursive;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--blue-dark);
+      margin: 40px 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, var(--blue), transparent);
+      border-radius: 2px;
+    }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* CARD */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      position: relative;
+      overflow: hidden;
+      border-top: 5px solid var(--blue);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 36px rgba(26,95,160,0.16);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+    }
+
+    .card-icon {
+      font-size: 2.4rem;
+      line-height: 1;
+    }
+    .card-name {
+      font-family: 'Baloo 2', cursive;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--text-light);
+      line-height: 1.55;
+      flex: 1;
+    }
+    .card-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 50px;
+      align-self: flex-start;
+      margin-top: 4px;
+    }
+
+    /* Color variants */
+    .c-green  { border-top-color: var(--green-mid); }
+    .c-green .card-tag  { background: var(--green-pale); color: var(--green-dark); }
+
+    .c-yellow { border-top-color: var(--yellow-dark); }
+    .c-yellow .card-tag { background: #fff8dc; color: var(--yellow-dark); }
+
+    .c-blue   { border-top-color: var(--blue); }
+    .c-blue .card-tag   { background: var(--blue-light); color: var(--blue); }
+
+    .c-orange { border-top-color: var(--orange); }
+    .c-orange .card-tag { background: #fef0e3; color: var(--orange); }
+
+    .c-purple { border-top-color: var(--purple); }
+    .c-purple .card-tag { background: #f0ebfa; color: var(--purple); }
+
+    .c-pink   { border-top-color: var(--pink); }
+    .c-pink .card-tag   { background: #fdeef6; color: var(--pink); }
+
+    .c-teal   { border-top-color: var(--teal); }
+    .c-teal .card-tag   { background: #e6f7f5; color: var(--teal); }
+
+    .c-red    { border-top-color: var(--red); }
+    .c-red .card-tag    { background: #fdecea; color: var(--red); }
+
+    /* FOURGON HIGHLIGHT */
+    .card-featured {
+      grid-column: span 2;
+      background: linear-gradient(135deg, #1a5fa0, #3578c4);
+      color: white;
+      border-top: none;
+    }
+    @media (max-width: 640px) {
+      .card-featured { grid-column: span 1; }
+    }
+    .card-featured .card-name { color: white; font-size: 1.4rem; }
+    .card-featured .card-desc { color: rgba(255,255,255,0.85); }
+    .card-featured .card-tag  { background: rgba(255,255,255,0.2); color: white; }
+    .card-featured .card-icon { font-size: 3rem; }
+    .sub-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .sub-action {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border-radius: 50px;
+      padding: 4px 14px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1a5fa0;
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 0.88rem;
+    }
+    footer strong { color: var(--yellow); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .card {
+      animation: fadeUp 0.5s ease both;
+    }
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.10s; }
+    .card:nth-child(3) { animation-delay: 0.15s; }
+    .card:nth-child(4) { animation-delay: 0.20s; }
+    .card:nth-child(5) { animation-delay: 0.25s; }
+    .card:nth-child(6) { animation-delay: 0.30s; }
+    .card:nth-child(7) { animation-delay: 0.35s; }
+    .card:nth-child(8) { animation-delay: 0.40s; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-logo">
+      <span class="logo-badge">Bouge ta Campagne !</span>
+    </div>
+    <h1>Nos <span>actions</span><br>pour les jeunes</h1>
+    <p>Un projet de proximité qui va à la rencontre des jeunes dans vos villages</p>
+    <span class="age-badge">16 – 29 ans · Vermandois &amp; Saint-Quentinois</span>
+  </header>
+
+  <svg class="wave" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 48 C360 0 1080 0 1440 48 L1440 0 L0 0 Z" fill="#3578c4"/>
+  </svg>
+
+  <main>
+
+    <!-- FOURGON -->
+    <div class="section-title">🚐 Le Fourgon — Espace Modulable</div>
+    <div class="grid">
+      <div class="card card-featured">
+        <div class="card-icon">🚐</div>
+        <div class="card-name">Le Fourgon débarque chez vous !</div>
+        <div class="card-desc">Un espace mobile qui se déplace de commune en commune, avec plusieurs activités à bord. Il s'installe, se déploie et repart — une animation complète livrée à domicile.</div>
+        <div class="sub-actions">
+          <span class="sub-action">🎲 Escape Game</span>
+          <span class="sub-action">🖨️ Goodies 3D</span>
+          <span class="sub-action">🚁 Survole ta Campagne</span>
+        </div>
+        <span class="card-tag">Itinérant</span>
+      </div>
+
+      <div class="card c-orange">
+        <div class="card-icon">🎲</div>
+        <div class="card-name">Escape Game Itinérant</div>
+        <div class="card-desc">Le fourgon arrive, le jeu commence. Résous des énigmes en équipe dans un scénario immersif. Le scénario change à chaque commune !</div>
+        <span class="card-tag">Jeu &amp; Aventure</span>
+      </div>
+
+
+
+      <div class="card c-teal">
+        <div class="card-icon">🖨️</div>
+        <div class="card-name">Création de Goodies 3D</div>
+        <div class="card-desc">Conçois ton propre objet — porte-clés, badge, figurine — et vois-le prendre forme sous tes yeux grâce à l'imprimante 3D du fourgon.</div>
+        <span class="card-tag">Fabrication</span>
+      </div>
+
+      <div class="card c-blue">
+        <div class="card-icon">🚁</div>
+        <div class="card-name">Survole ta Campagne</div>
+        <div class="card-desc">Prends les commandes d'un drone, filme ton territoire sous un angle inédit et monte ta propre vidéo. Tu repars avec ta création !</div>
+        <span class="card-tag">Vidéo &amp; Drone</span>
+      </div>
+    </div>
+
+    <!-- ATELIERS -->
+    <div class="section-title">🎨 Ateliers</div>
+    <div class="grid">
+      <div class="card c-purple">
+        <div class="card-icon">🐉</div>
+        <div class="card-name">Initiation au JDR</div>
+        <div class="card-desc">Découvre le jeu de rôle, crée ton personnage avec l'aide de l'IA et repart avec ta figurine imprimée en 3D. En salle, pour prendre le temps de vraiment jouer.</div>
+        <span class="card-tag">Créatif</span>
+      </div>
+
+      <div class="card c-teal">
+        <div class="card-icon">🕹️</div>
+        <div class="card-name">Création de Jeux Vidéo</div>
+        <div class="card-desc">Conçois et programme ton propre jeu vidéo à partir de zéro. Scénario, personnages, niveaux — tu es le game designer. Aucune expérience requise !</div>
+        <span class="card-tag">Numérique</span>
+      </div>
+    </div>
+    <!-- EVENEMENTS -->
+    <div class="section-title">🎮 Événements</div>
+    <div class="grid">
+      <div class="card c-yellow">
+        <div class="card-icon">🎮</div>
+        <div class="card-name">Pixel Day</div>
+        <div class="card-desc">Une après-midi ou soirée jeux vidéo : diffusion d'un match eSport sur grand écran, tournoi local, Jeux de la Bombe, Among Us… Ambiance garantie !</div>
+        <span class="card-tag">Événement</span>
+      </div>
+
+
+
+      <div class="card c-green">
+        <div class="card-icon">🗺️</div>
+        <div class="card-name">QR Quest</div>
+        <div class="card-desc">Un rallye QR code à travers les communes. À vélo ou à pied, scanne les checkpoints, résous les énigmes et découvre ton territoire autrement.</div>
+        <span class="card-tag">Outdoor &amp; Numérique</span>
+      </div>
+
+      <div class="card c-pink">
+        <div class="card-icon">🔍</div>
+        <div class="card-name">Murder Party Numérique</div>
+        <div class="card-desc">Un meurtre à élucider ! Une partie du scénario se joue sur place, l'autre via une appli avec QR codes et énigmes numériques. Immersif et addictif.</div>
+        <span class="card-tag">Enquête</span>
+      </div>
+    </div>
+
+    <!-- IA -->
+    <div class="section-title">🤖 Intelligence Artificielle</div>
+    <div class="grid">
+      <div class="card c-blue">
+        <div class="card-icon">☕</div>
+        <div class="card-name">Cause Toujours</div>
+        <div class="card-desc">Un café discussion autour de l'IA : ce qu'elle sait faire, ce qu'elle rate, ce qu'elle change. Sans cours, sans slides — juste une conversation ouverte.</div>
+        <span class="card-tag">Discussion</span>
+      </div>
+
+
+
+      <div class="card c-teal">
+        <div class="card-icon">🎨</div>
+        <div class="card-name">Créa IA</div>
+        <div class="card-desc">Génère une musique, crée ton avatar, écris une histoire… L'IA devient ton outil de création. Tu repars avec quelque chose que tu as vraiment fait.</div>
+        <span class="card-tag">Création</span>
+      </div>
+
+      <div class="card c-blue">
+        <div class="card-icon">🌐</div>
+        <div class="card-name">Crée ton site web avec l'IA</div>
+        <div class="card-desc">Conçois et publie ton propre site web avec l'aide de l'IA. Idéal pour présenter ton asso, ton projet ou ton portfolio. Aucune connaissance en code requise !</div>
+        <span class="card-tag">Numérique</span>
+      </div>
+
+
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Un projet porté par <strong>Bouge ta Campagne !</strong> — Vermandois &amp; Saint-Quentinois</p>
+    <p style="margin-top:6px">Pour les jeunes de 16 à 29 ans · Cofinancé par l'Union Européenne</p>
+  </footer>
+
+</body>
+</html>
