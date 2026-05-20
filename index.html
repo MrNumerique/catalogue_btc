@@ -160,6 +160,9 @@
       gap: 20px;
     }
 
+    .grid-featured { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 640px) { .grid-featured { grid-template-columns: 1fr; } }
+
     /* CARD — défaut vert */
     .card {
       background: var(--white);
@@ -226,7 +229,7 @@
 
     /* FOURGON HIGHLIGHT */
     .card-featured {
-      grid-column: span 2;
+      grid-column: 1 / -1;
       background: #ffffff;
       color: var(--text);
       border-top: none;
